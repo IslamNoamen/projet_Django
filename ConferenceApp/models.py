@@ -28,8 +28,9 @@ class Conference(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def clean(self):
-        if self.start_date > self.end_date:
-            raise ValidationError("End date must be after start date.")
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError("End date must be after start date.")
 
     def __str__(self):
         return f"{self.name} ({self.theme})"
@@ -69,6 +70,7 @@ class Submission(models.Model):
         super().save(*args, **kwargs)
 
     def clean(self):
+        
         errors = {}
         if self.conference_id and self.conference_id.start_date < date.today():
             # Change 'conference_id' to 'conference_id' or use __all__ for non-field errors
