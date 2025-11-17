@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Inscription{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+<form method="post">
+    <h2>Créer un compte participant</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-submit">S'inscrire</button>
+    <p class="text-center mt-3">
+        Déjà un compte ? <a href="{% url 'login' %}">Connectez-vous ici</a>
+    </p>
+</form>
+{% endblock %}

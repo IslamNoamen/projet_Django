@@ -1,24 +1,38 @@
-<html>
-
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestion de Conférences{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
 <body>
-
     <nav>
-        <a>Home </a>
-        <a href=""{% url 'conference_liste' %}>Conférence</a>
+        <a href="/">Home</a>
+        <a href="{% url 'conference_liste' %}">Conférence</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Déconnexion</a>
+            <span>Bienvenue, {{ user.username }}</span>
+        {% else %}
+            <a href="{% url 'login' %}">Connexion</a>
+            <a href="{% url 'register' %}">Inscription</a>
+        {% endif %}
     </nav>
     <div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         {% block content %}{% endblock %}
     </div>
     <footer>
         <p>2025-2026</p>
         <p>Workshop Django</p>
-
     </footer>
 </body>
-
-
-
-
-
 </html>

@@ -3,6 +3,7 @@ from .models import Conference
 from django.urls import reverse_lazy
 from .forms import ConferenceModel
 from django.views.generic import ListView,DetailView,CreateView,UpdateView , DeleteView
+from django.contrib.auth.mixins import  LoginRequiredMixin
 # Create your views here.
 def all_conference(req):
     conferences=Conference.objects.all()

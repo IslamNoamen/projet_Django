@@ -1,0 +1,204 @@
+/* Conference List CSS - Modern card-based layout */
+
+.conferences-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.conferences-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.conferences-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.conferences-header .btn {
+    margin-top: 1rem;
+}
+
+.conferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.conference-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.conference-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.conference-card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.conference-card-header h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.conference-card-header .badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.conference-card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.conference-info {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.conference-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--gray-700);
+}
+
+.conference-info-item .icon {
+    margin-right: 0.75rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.conference-info-item strong {
+    margin-right: 0.5rem;
+    color: var(--gray-800);
+}
+
+.conference-description {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.conference-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--gray-200);
+    flex-wrap: wrap;
+}
+
+.conference-actions .btn {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+}
+
+.conference-actions .btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+}
+
+.conference-actions .btn-warning {
+    background-color: var(--warning-color);
+}
+
+.conference-actions .btn-danger {
+    background-color: var(--danger-color);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--gray-600);
+}
+
+.empty-state h2 {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .conferences-container {
+        padding: 1rem;
+    }
+
+    .conferences-header h1 {
+        font-size: 2rem;
+    }
+
+    .conferences-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .conference-actions {
+        flex-direction: column;
+    }
+
+    .conference-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.conference-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.conference-card:nth-child(1) { animation-delay: 0.1s; }
+.conference-card:nth-child(2) { animation-delay: 0.2s; }
+.conference-card:nth-child(3) { animation-delay: 0.3s; }
+.conference-card:nth-child(4) { animation-delay: 0.4s; }
+.conference-card:nth-child(5) { animation-delay: 0.5s; }
+.conference-card:nth-child(6) { animation-delay: 0.6s; }
+

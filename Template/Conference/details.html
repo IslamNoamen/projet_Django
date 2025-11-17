@@ -1,1 +1,51 @@
-<h1>{{conference.name}}</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ conference.name }}{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+{% block content %}
+<div class="details-container">
+    <div class="details-header">
+        <h1>{{ conference.name }}</h1>
+        <span class="badge">{{ conference.get_theme_display }}</span>
+    </div>
+    
+    <div class="details-content">
+        <div class="details-section">
+            <h2>Description</h2>
+            <div class="description-box">
+                <p>{{ conference.description }}</p>
+            </div>
+        </div>
+        
+        <div class="details-section">
+            <h2>Informations</h2>
+            <div class="details-info-grid">
+                <div class="info-item">
+                    <strong><span class="icon">📍</span> Localisation</strong>
+                    <span>{{ conference.location }}</span>
+                </div>
+                <div class="info-item">
+                    <strong><span class="icon">📅</span> Date de début</strong>
+                    <span>{{ conference.start_date|date:"d F Y" }}</span>
+                </div>
+                <div class="info-item">
+                    <strong><span class="icon">📅</span> Date de fin</strong>
+                    <span>{{ conference.end_date|date:"d F Y" }}</span>
+                </div>
+                <div class="info-item">
+                    <strong><span class="icon">🏷️</span> Thème</strong>
+                    <span>{{ conference.get_theme_display }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="details-actions">
+            <a href="{% url 'conference_liste' %}" class="btn btn-secondary">Retour à la liste</a>
+            <a href="{% url 'conference_update' conference.pk %}" class="btn btn-warning">Modifier</a>
+            <a href="{% url 'conference_delete' conference.pk %}" class="btn btn-danger">Supprimer</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

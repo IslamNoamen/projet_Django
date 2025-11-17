@@ -1,12 +1,19 @@
-{% if view.object.pk %}
-<h2>Modifier une conférence</h2>
-{% else %}
-
-<h2>Ajouter une conférence</h2>
- {% endif %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% if view.object.pk %}Modifier{% else %}Ajouter{% endif %} une conférence{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
 <form method="post">
-{% csrf_token %}
-{{form.as_p}}
-<button type="submit">enregistrer</button>
+    {% if view.object.pk %}
+    <h2>Modifier une conférence</h2>
+    {% else %}
+    <h2>Ajouter une conférence</h2>
+    {% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-submit">Enregistrer</button>
+    <a href="{% url 'conference_liste' %}" class="btn btn-secondary" style="width: 100%; margin-top: 1rem; text-align: center; display: block;">Annuler</a>
 </form>
-
+{% endblock %}

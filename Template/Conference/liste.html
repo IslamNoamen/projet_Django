@@ -1,30 +1,62 @@
 {% extends "base.html" %}
-{% block content %}
+{% load static %}
 
-<h2>La liste des conferences</h2>
-<table border="1">
-<tr>
-    <td>title</td>
-    <td>location</td>
-    <td>Actions</td>
-</tr>
-{% for c in liste %}
-<tr>
-    <td>{{c.name}}</td>
-    <td>{{c.location}}</td>
-    <td>
-        <a href="{% url 'conference_detail' c.pk %}">
-            Détails
-        </a>
-        <a href="{% url 'conference_update' c.pk %}">
-            edit
-        </a>
-        <a href="{% url 'conference_delete' c.pk %}">
-            delete
-        </a>
-    </td>
-</tr>
-{% endfor %}
-</table>
+{% block title %}Liste des conférences{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/liste.css' %}">
 {% endblock %}
 
+{% block content %}
+<div class="conferences-container">
+    <div class="conferences-header">
+        <h1>Nos Conférences</h1>
+        <a href="{% url 'conference_add' %}" class="btn btn-primary">Ajouter une conférence</a>
+    </div>
+    
+    {% if liste %}
+    <div class="conferences-grid">
+        {% for c in liste %}
+        <div class="conference-card">
+            <div class="conference-card-header">
+                <h3>{{ c.name }}</h3>
+                <span class="badge">{{ c.get_theme_display }}</span>
+            </div>
+            <div class="conference-card-body">
+                <div class="conference-info">
+                    <div class="conference-info-item">
+                        <span class="icon">📍</span>
+                        <strong>Localisation:</strong> {{ c.location }}
+                    </div>
+                    <div class="conference-info-item">
+                        <span class="icon">📅</span>
+                        <strong>Début:</strong> {{ c.start_date|date:"d M Y" }}
+                    </div>
+                    <div class="conference-info-item">
+                        <span class="icon">📅</span>
+                        <strong>Fin:</strong> {{ c.end_date|date:"d M Y" }}
+                    </div>
+                    {% if c.description %}
+                    <div class="conference-description">
+                        {{ c.description|truncatewords:20 }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="conference-actions">
+                    <a href="{% url 'conference_detail' c.pk %}" class="btn btn-primary">Détails</a>
+                    <a href="{% url 'conference_update' c.pk %}" class="btn btn-warning">Modifier</a>
+                    <a href="{% url 'conference_delete' c.pk %}" class="btn btn-danger">Supprimer</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h2>Aucune conférence disponible</h2>
+        <p>Commencez par ajouter votre première conférence.</p>
+        <a href="{% url 'conference_add' %}" class="btn btn-primary">Ajouter une conférence</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

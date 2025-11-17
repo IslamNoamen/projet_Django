@@ -1,0 +1,250 @@
+/* Details CSS - Styling for Conference Details Page */
+
+.details-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.details-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 3rem 2.5rem;
+    text-align: center;
+}
+
+.details-header h1 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.details-header .badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.details-content {
+    padding: 2.5rem;
+}
+
+.details-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.details-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.details-section h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+}
+
+.details-section h3 {
+    color: var(--gray-800);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+.details-section p {
+    color: var(--gray-700);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.details-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.info-item {
+    background: var(--gray-100);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.info-item:hover {
+    background: var(--gray-200);
+    transform: translateX(4px);
+}
+
+.info-item strong {
+    display: block;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.info-item span {
+    display: block;
+    color: var(--gray-900);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.info-item .icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0.25rem;
+}
+
+.badge-primary {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.badge-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Action Buttons */
+.details-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gray-200);
+    flex-wrap: wrap;
+}
+
+.details-actions .btn {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 0.875rem 1.5rem;
+}
+
+/* Description Box */
+.description-box {
+    background: var(--gray-100);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary-color);
+    margin-top: 1rem;
+    line-height: 1.8;
+}
+
+/* Keywords */
+.keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.keyword-tag {
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .details-container {
+        margin: 1rem;
+        border-radius: var(--radius);
+    }
+
+    .details-header {
+        padding: 2rem 1.5rem;
+    }
+
+    .details-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .details-content {
+        padding: 1.5rem;
+    }
+
+    .details-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-actions {
+        flex-direction: column;
+    }
+
+    .details-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray-600);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray-600);
+}
+
+.empty-state h2 {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+}
+
